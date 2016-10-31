@@ -29,8 +29,8 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 
 
-// var routes = require('./controllers/todo_controller.js')
-// app.use('/', routes)
+var routes = require('./controllers/todo_controller.js')
+app.use('/', routes)
 
 
 // Starts the server to begin listening
