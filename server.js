@@ -32,7 +32,7 @@ var conn = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : pass,
-  database : ''
+  database : 'todo_db'
 })
 
 conn.connect(function(err) {
@@ -43,7 +43,7 @@ conn.connect(function(err) {
 
   console.log('connected as id ' + conn.threadId)
 
-}
+})
 
 
 // Starts the server to begin listening
