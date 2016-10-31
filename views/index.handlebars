@@ -1,1 +1,28 @@
-<h2>{{text}}</h2>
+<h2>Current Tasks</h2>
+
+<h3>Unfinished Tasks</h3>
+<ul>
+	{{#each tasks}}
+		{{#unless this.completed}}
+		<li>
+			<p>ID: {{this.id}}; Name: {{this.todo_name}}</p>
+		</li>
+		{{/unless}}
+	{{/each}}
+</ul>
+
+
+
+
+<h2>Add a Task</h2>
+<form class="create-update-form" action="/new" method="POST">
+
+  <div class="form-group">
+    <label for="task">Task:</label>
+    <input type="text" id="task" name="name">
+  </div>
+
+  <button type="button" class="btn btn-primary btn-lg" id="submitButton">Submit Button</button>
+</form>
+
+
