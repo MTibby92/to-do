@@ -8,32 +8,38 @@
 <div class="row row-centered">
 	<div class="col-md-6 col-centered">
 		<h3 class="text-center">Unfinished Tasks</h3>
-		<ul>
-			{{#each tasks}}
-				{{#unless this.completed}}
-				<form action="/update/{{this.id}}?_method=PUT" method="POST">
-					<li>
-						<p>ID: {{this.id}}; Name: {{this.todo_name}}</p>
-						<button type="submit" class="btn btn-primary btn-lg" id="submitButton">Mark Complete</button>
-					</li>
-				</form>
-				{{/unless}}
-			{{/each}}
-		</ul>
+		<div class="row">
+				{{#each tasks}}
+					{{#unless this.completed}}
+					<div class="col-md-12">
+						<form action="/update/{{this.id}}?_method=PUT" method="POST">
+							<div class="col-md-6">
+								<p>ID: {{this.id}}; Name: {{this.todo_name}}</p>
+							</div>
+							<div class="col-md-6">
+								<button type="submit" class="btn btn-primary btn-sm" id="submitButton">Mark Complete</button>
+							</div>
+						</form>	
+					</div>
+					{{/unless}}
+				{{/each}}
+		</div>
 	</div>
 	<div class="col-md-6 col-centered">
 		<h3 class="text-center">Finished Tasks</h3>
-		<ul>
+		<div class="row">
 			{{#each tasks}}
 				{{#if this.completed}}
-				<form action="/update/{{this.id}}?_method=PUT" method="POST">
-					<li>
-						<p>ID: {{this.id}}; Name: {{this.todo_name}}</p>
-					</li>
-				</form>
+				<div class="col-md-12">
+					<form action="/update/{{this.id}}?_method=PUT" method="POST">
+						<div>
+							<p class="text-center">ID: {{this.id}}; Name: {{this.todo_name}}</p>
+						</div>
+					</form>
+				</div>
 				{{/if}}
 			{{/each}}
-		</ul>
+		</div>
 	</div>
 </div>
 
@@ -42,12 +48,15 @@
 		<h2 class="text-center">Add a Task</h2>
 			<form class="create-update-form centered" action="/new" method="POST">
 
-			  <div class="form-group center-form center-block">
-			    <label for="task" class="text-center">Task:</label>
-			    <input type="text" id="task" name="name" class="text-center">
-			  </div>
+				<div class="form-group center-form center-block">
+					<label for="task" class="text-center">Task:</label>
+					<input type="text" id="task" name="name">
+				</div>
 
-			  <button type="submit" class="btn btn-primary btn-lg" id="submitButton">Submit Button</button>
+				<div class="center-form"> 
+				  	<button type="submit" class="btn btn-primary btn-lg" id="submitButton">Submit Button</button>
+				</div>
+			  
 			</form>
 	</div>
 </div>
