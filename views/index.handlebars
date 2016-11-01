@@ -1,28 +1,57 @@
-<h2>Current Tasks</h2>
-
-<h3>Unfinished Tasks</h3>
-<ul>
-	{{#each tasks}}
-		{{#unless this.completed}}
-		<li>
-			<p>ID: {{this.id}}; Name: {{this.todo_name}}</p>
-		</li>
-		{{/unless}}
-	{{/each}}
-</ul>
+<div class="row row-centered">
+	<div class="col-md-12 col-centered">
+		<h2 class="text-center">Current Tasks</h2>
+	</div>
+</div>
 
 
+<div class="row row-centered">
+	<div class="col-md-6 col-centered">
+		<h3 class="text-center">Unfinished Tasks</h3>
+		<ul>
+			{{#each tasks}}
+				{{#unless this.completed}}
+				<form action="/update/{{this.id}}?_method=PUT" method="POST">
+					<li>
+						<p>ID: {{this.id}}; Name: {{this.todo_name}}</p>
+						<button type="submit" class="btn btn-primary btn-lg" id="submitButton">Mark Complete</button>
+					</li>
+				</form>
+				{{/unless}}
+			{{/each}}
+		</ul>
+	</div>
+	<div class="col-md-6 col-centered">
+		<h3 class="text-center">Finished Tasks</h3>
+		<ul>
+			{{#each tasks}}
+				{{#if this.completed}}
+				<form action="/update/{{this.id}}?_method=PUT" method="POST">
+					<li>
+						<p>ID: {{this.id}}; Name: {{this.todo_name}}</p>
+					</li>
+				</form>
+				{{/if}}
+			{{/each}}
+		</ul>
+	</div>
+</div>
+
+<div class="row row-centered">
+	<div class="col-md-12 col-centered">
+		<h2 class="text-center">Add a Task</h2>
+			<form class="create-update-form centered" action="/new" method="POST">
+
+			  <div class="form-group center-form center-block">
+			    <label for="task" class="text-center">Task:</label>
+			    <input type="text" id="task" name="name" class="text-center">
+			  </div>
+
+			  <button type="submit" class="btn btn-primary btn-lg" id="submitButton">Submit Button</button>
+			</form>
+	</div>
+</div>
 
 
-<h2>Add a Task</h2>
-<form class="create-update-form" action="/new" method="POST">
-
-  <div class="form-group">
-    <label for="task">Task:</label>
-    <input type="text" id="task" name="name">
-  </div>
-
-  <button type="button" class="btn btn-primary btn-lg" id="submitButton">Submit Button</button>
-</form>
 
 
